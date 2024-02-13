@@ -12,6 +12,10 @@ def translate(word):
     word = word.lower()
     if word in data:
         return data[word]
+    elif word.title() in data:
+        return data[word.title()]
+    elif word.upper() in data:
+        return data[word.upper()]
     elif len(get_close_matches(word, data.keys())) > 0:
         yes_no = input(f"Did you mean {get_close_matches(word, data.keys())[0]} instead? Enter Y if yes, or N if no\n")
         if yes_no == "Y":
@@ -30,5 +34,5 @@ if type(output) == list:
         print(item)
 else:
     print(output)
-    
+
 
